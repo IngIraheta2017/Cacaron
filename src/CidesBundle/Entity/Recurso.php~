@@ -1,0 +1,61 @@
+<?php
+
+namespace CidesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Recurso
+ *
+ * @ORM\Table(name="recurso")
+ * @ORM\Entity
+ */
+class Recurso
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre_recurso", type="string", length=254, nullable=true)
+     */
+    private $nombreRecurso;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion_recurso", type="string", length=254, nullable=true)
+     */
+    private $descripcionRecurso;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_recurso", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idRecurso;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="CidesBundle\Entity\Actividad", mappedBy="idRecurso")
+     */
+    private $idActividad;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="CidesBundle\Entity\Proyecto", mappedBy="idRecurso")
+     */
+    private $idProyecto;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idActividad = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idProyecto = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

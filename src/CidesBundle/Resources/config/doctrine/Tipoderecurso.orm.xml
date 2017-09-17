@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CidesBundle\Entity\Tipoderecurso" table="tipoDeRecurso">
+    <indexes>
+      <index name="FK_Association_12" columns="id_recurso"/>
+    </indexes>
+    <id name="idTipoderecurso" type="integer" column="id_tipoDeRecurso">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombreTipo" type="string" column="nombre_tipo" length="254" nullable="true"/>
+    <field name="descripcionTipo" type="string" column="descripcion_tipo" length="254" nullable="true"/>
+    <many-to-one field="idRecurso" target-entity="Recurso">
+      <join-columns>
+        <join-column name="id_recurso" referenced-column-name="id_recurso"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

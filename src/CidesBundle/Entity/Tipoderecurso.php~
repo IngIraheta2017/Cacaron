@@ -1,0 +1,49 @@
+<?php
+
+namespace CidesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tipoderecurso
+ *
+ * @ORM\Table(name="tipoDeRecurso", indexes={@ORM\Index(name="FK_Association_12", columns={"id_recurso"})})
+ * @ORM\Entity
+ */
+class Tipoderecurso
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre_tipo", type="string", length=254, nullable=true)
+     */
+    private $nombreTipo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion_tipo", type="string", length=254, nullable=true)
+     */
+    private $descripcionTipo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_tipoDeRecurso", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idTipoderecurso;
+
+    /**
+     * @var \CidesBundle\Entity\Recurso
+     *
+     * @ORM\ManyToOne(targetEntity="CidesBundle\Entity\Recurso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_recurso", referencedColumnName="id_recurso")
+     * })
+     */
+    private $idRecurso;
+
+
+}

@@ -1,0 +1,45 @@
+<?php
+
+namespace CidesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Permisos
+ *
+ * @ORM\Table(name="permisos", indexes={@ORM\Index(name="FK_Association_14", columns={"id_rol"}), @ORM\Index(name="FK_Association_15", columns={"id_menuItem"})})
+ * @ORM\Entity
+ */
+class Permisos
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_permisos", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idPermisos;
+
+    /**
+     * @var \CidesBundle\Entity\Rol
+     *
+     * @ORM\ManyToOne(targetEntity="CidesBundle\Entity\Rol")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_rol", referencedColumnName="id_rol")
+     * })
+     */
+    private $idRol;
+
+    /**
+     * @var \CidesBundle\Entity\Menuitem
+     *
+     * @ORM\ManyToOne(targetEntity="CidesBundle\Entity\Menuitem")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_menuItem", referencedColumnName="id_menuItem")
+     * })
+     */
+    private $idMenuitem;
+
+
+}
